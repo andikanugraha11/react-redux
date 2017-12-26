@@ -7,15 +7,13 @@
 // ReactDOM.render(<App />, document.getElementById('root'));
 // registerServiceWorker();
 
-import { createStore } from 'redux';
+import { createStore , combineReducers} from 'redux';
 
-const initialState = {
+
+const mathReducer = (state = {
     result : 1,
-    lastValues : [],
-    username : 'dika'
-}
-
-const reducer = (state = initialState,action)=>{
+    lastValues : []
+},action)=>{
     switch(action.type){
         case "ADD":
             state = {
@@ -38,10 +36,32 @@ const reducer = (state = initialState,action)=>{
     return state;
 }
 
+const userReducer = (state = {
+    username : 'Andika',
+    email : 'm.andika.nugraha@gmail.com'
+},action)=>{
+    switch(action.type){
+        case "SET_USERNAME":
+            state = {
+                ...state,
+                username : action.payload
+            }
+            break;
+        case "SET_EMAIL":
+            state = {
+                ...state,
+                email : action.payload
+            }
+            break;
+    }
+    return state;
+}
+
 // if reducer state parameter didn't initialize
 // const store = createStore(reducer, 1);
 
-const store = createStore(reducer);
+// const store = createStore(mathReducer);
+const store = createStore(combineReducers({mathReducer,userReducer}));
 
 store.subscribe(()=>{
     console.log('Store updated', store.getState());
@@ -65,4 +85,9 @@ store.dispatch({
 store.dispatch({
     type : 'SUBSTRACT',
     payload : 20,
-})
+});
+
+store.dispatch({
+    type : 'SET_USERNAME',
+    payload : 'Andika Nugraha',
+});
