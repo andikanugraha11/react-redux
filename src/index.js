@@ -7,8 +7,8 @@
 // ReactDOM.render(<App />, document.getElementById('root'));
 // registerServiceWorker();
 
-import { createStore , combineReducers} from 'redux';
-
+import { createStore , combineReducers,  applyMiddleware } from 'redux';
+import logger from 'redux-logger';
 
 const mathReducer = (state = {
     result : 1,
@@ -57,14 +57,23 @@ const userReducer = (state = {
     return state;
 }
 
+// manual logger
+const myLogger = (store) => (next) => (action) => {
+    console.log("logged action :", action);
+    next(action);
+}
+
 // if reducer state parameter didn't initialize
 // const store = createStore(reducer, 1);
 
 // const store = createStore(mathReducer);
-const store = createStore(combineReducers({mathReducer,userReducer}));
+
+// manual       
+// const store = createStore(combineReducers({mathReducer,userReducer}), {}, applyMiddleware(myLogger));
+const store = createStore(combineReducers({mathReducer,userReducer}), {}, applyMiddleware(logger));
 
 store.subscribe(()=>{
-    console.log('Store updated', store.getState());
+    // console.log('Store updated', store.getState());
 });
 
 store.dispatch({
