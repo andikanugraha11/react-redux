@@ -1,11 +1,9 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import './index.css';
-// import App from './App';
-// import registerServiceWorker from './registerServiceWorker';
-
-// ReactDOM.render(<App />, document.getElementById('root'));
-// registerServiceWorker();
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
+import {Provider} from "react-redux";
 
 import { createStore , combineReducers,  applyMiddleware } from 'redux';
 import logger from 'redux-logger';
@@ -76,27 +74,35 @@ store.subscribe(()=>{
     // console.log('Store updated', store.getState());
 });
 
-store.dispatch({
-    type : 'ADD',
-    payload : 10,
-});
+// store.dispatch({
+//     type : 'ADD',
+//     payload : 10,
+// });
 
-store.dispatch({
-    type : 'ADD',
-    payload : 10,
-});
+// store.dispatch({
+//     type : 'ADD',
+//     payload : 10,
+// });
 
-store.dispatch({
-    type : 'ADD',
-    payload : 10,
-});
+// store.dispatch({
+//     type : 'ADD',
+//     payload : 10,
+// });
 
-store.dispatch({
-    type : 'SUBSTRACT',
-    payload : 20,
-});
+// store.dispatch({
+//     type : 'SUBSTRACT',
+//     payload : 20,
+// });
 
-store.dispatch({
-    type : 'SET_USERNAME',
-    payload : 'Andika Nugraha',
-});
+// store.dispatch({
+//     type : 'SET_USERNAME',
+//     payload : 'Andika Nugraha',
+// });
+
+
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>
+    , document.getElementById('root'));
+registerServiceWorker();
