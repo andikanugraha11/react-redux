@@ -3,7 +3,7 @@ const userReducer = (state = {
     email : 'm.andika.nugraha@gmail.com'
 },action)=>{
     switch(action.type){
-        case "SET_USERNAME":
+        case "SET_USERNAME_FULFILLED":
             state = {
                 ...state,
                 username : action.payload
