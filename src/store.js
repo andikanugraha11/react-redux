@@ -1,4 +1,5 @@
 import { createStore , combineReducers,  applyMiddleware } from "redux";
+import { reducer as formReducer } from 'redux-form'
 import logger from "redux-logger";
 import thunk from 'redux-thunk';
 import promise from 'redux-promise-middleware';
@@ -9,7 +10,8 @@ import userReducer from "./reducers/userReducer";
 const store = createStore(
     combineReducers({
             mathReducer,
-            userReducer
+            userReducer,
+            form : formReducer
         }),
         {},
         applyMiddleware(logger, thunk, promise())

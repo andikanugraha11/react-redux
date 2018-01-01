@@ -4,10 +4,19 @@ import Main from '../components/Main.js';
 import { connect } from 'react-redux';
 import {setUsername} from '../actions/userAction';
 class App extends Component {
+  
+  changeUsr = (values) =>{
+    if(typeof values.usrName === 'undefined'){
+      alert('Username tidak boleh kosong');
+    }else{
+      this.props.setName(values.usrName);
+    }
+  }
+
   render() {
     return (
       <div className="App">
-        <Main btnName="Ganti User" username={this.props.user.username} btnAction={()=>{this.props.setName("dika")}}/>
+        <Main btnName="Ganti User" username={this.props.user.username} onSubmit={this.changeUsr}/>
       </div>
     );
   }
