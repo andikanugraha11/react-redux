@@ -9,6 +9,7 @@ const Main = (props) => {
         <div>
           <label htmlFor="firstName">First Name</label>
           <Field name="usrName" component="input" type="text" />
+          <Field name="usrEmail" component="input" type="text" />
         </div>
         <button type="submit">{props.btnName}</button>
       </form>
