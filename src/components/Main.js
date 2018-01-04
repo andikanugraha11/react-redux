@@ -13,10 +13,6 @@ const Main = (props) => {
         </div>
         <button type="submit">{props.btnName}</button>
       </form>
-      {/* <div className="Button">
-        <h1>Username : {props.username}</h1>
-        <button onClick={props.btnAction}>{props.btnName}</button>
-      </div> */}
     </div>
   );
 }
